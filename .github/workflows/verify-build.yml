@@ -1,0 +1,25 @@
+name: build
+
+on:
+  push:
+
+jobs:
+  build:
+    name: Building iOS app
+    runs-on: macos-12
+    steps:
+    - name: Cancel Previous Runs
+      uses: styfle/cancel-workflow-action@0.9.1
+      with:
+        access_token: ${{ github.token }}
+
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Select Xcode
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: latest-stable
+
+    - name: Build
+      run: xcodebuild -project 'RSwiftCI.xcodeproj' -scheme 'RSwiftCI' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14 Pro' -UseNewBuildSystem=YES -skipPackagePluginValidation
