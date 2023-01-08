@@ -22,4 +22,4 @@ jobs:
         xcode-version: latest-stable
 
     - name: Build
-      run: xcodebuild -project 'RSwiftCI.xcodeproj' -scheme 'RSwiftCI' -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 14 Pro' -UseNewBuildSystem=YES -skipPackagePluginValidation
+      run: xcodebuild -project 'RSwiftCI.xcodeproj' -scheme 'RSwiftCI' -destination 'platform=iOS Simulator,name=iPhone 14 Pro' -UseNewBuildSystem=YES -skipPackagePluginValidation
